@@ -1,6 +1,5 @@
-angular.module('scrum_retroboard')
-		.controller('HomeController', ['$scope', function($scope){
+app.controller('HomeController', ['$scope', function($scope){
 
-
+$scope.test = "TEST";
 
 }]);
