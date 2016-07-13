@@ -1,12 +1,9 @@
-'use strict';
+(function() {
+    'use strict';
 
-// Declare app level module which depends on views, and components
-angular.module('scrum_retroboard', ['ui.router']);
-
-angular
+    angular
 	.module('scrum_retroboard')
 	.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
-
 		$urlRouterProvider.otherwise('/');
 
 		$stateProvider.state('home', {
@@ -17,5 +14,5 @@ angular
 		});
 
 		$locationProvider.html5Mode(true);
-
 	});
+})();
