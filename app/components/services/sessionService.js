@@ -60,17 +60,7 @@
 
         function sessionExists(sessionId) {
             return $http
-                    .get(sessionApiUrl + 'SessionExists/' + sessionId)
-                    .success(successCallback)
-                    .error(errorCallback);
-            
-            function successCallback(response) {
-                return response.data;
-            }
-
-            function errorCallback(response) {
-                console.log(response.data);
-            }
+                    .get(sessionApiUrl + 'SessionExists/' + sessionId);
         }
 
         function setSessionId(_sessionId) {
