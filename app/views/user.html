@@ -1,1 +1,13 @@
-<input type="text" ng-model="userVm.username" >
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-sm-8 col-xs-12 col-sm-offset-0 col-md-offset-2">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="userVm.username" placeholder="Display name">
+                <span class="input-group-btn">
+                    <button class="btn btn-success" ng-hide="userVm.newSession" type="button" ng-click="userVm.joinExistingSession()">JOIN SESSION</button>
+                    <button class="btn btn-success" ng-show="userVm.newSession" type="button" ng-click="userVm.createAndJoinSesison()">JOIN SESSION</button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
