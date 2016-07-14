@@ -4,7 +4,7 @@ angular
 
 function sessionService($http) {
     var sessionId = "";
-    var sessionApiUrl = 'endava-scrum-app-staging.azurewebsites.net/api/Sessions/';
+    var sessionApiUrl = 'https://endava-scrum-app-staging.azurewebsites.net/api/Sessions/';
     var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
         'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
