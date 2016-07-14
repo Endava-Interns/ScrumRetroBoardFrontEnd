@@ -13,7 +13,11 @@
         userVm.username = "";
         userVm.sessionId = sessionService.getSessionId();
 
-        userVm.newSession = sessionService.sessionExists(userVm.sessionId);
+        sessionService
+            .sessionExists(userVm.sessionId)
+            .then(function(data) {
+                userVm.newSession = data;
+            });
 
         console.log(userVm.newSession);
 
