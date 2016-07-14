@@ -7,6 +7,7 @@
 
     function userService($http, sessionService) {
         var userApiUrl = "";
+        var username = "";
 
         function addUserToSession(username, sessionId) {
             var user = {
@@ -25,6 +26,14 @@
             function errorCallback(response) {
                 console.log(response.data);
             }
+        }
+
+        function setUsername(_username) {
+            username = _username;
+        }
+
+        function getUsername() {
+            return username;
         }
     }
 })();

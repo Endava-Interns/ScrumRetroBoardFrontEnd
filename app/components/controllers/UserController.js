@@ -18,10 +18,11 @@
         //scope method definitions
         function createAndJoinSession() {
             sessionService.createSession();
-            userService.addUserToSession(userVm.username, sessionService.getSessionId());
+            joinExistingSession();
         }
 
         function joinExistingSession() {
+            userService.setUsername(userVm.username);
             userService.addUserToSession(userVm.username, sessionService.getSessionId());
         }
     }

@@ -19,7 +19,13 @@
                 url: '/user',
                 templateUrl: 'views/user.html',
                 controller: 'UserController',
-                controllerAs: 'userVm',
+                controllerAs: 'userVm'
+            })
+            .state('session',{
+                url: '/session',
+                templateUrl: '/views/session.html',
+                controller: 'SessionController',
+                controllerAs: 'sessionVm'
             });
 
         $locationProvider.html5Mode(true);
