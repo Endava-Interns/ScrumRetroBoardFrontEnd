@@ -10,11 +10,10 @@
 
         //scope models
         userVm.username = "";
-        userVm.sessionId = "";
         
         //scope method assignments
         userVm.createAndJoinSession = createAndJoinSession;
-        userVm.printSessionId = printSessionId;
+        userVm.joinExistingSession = joinExistingSession;
 
         //scope method definitions
         function createAndJoinSession() {
@@ -24,10 +23,6 @@
 
         function joinExistingSession() {
             userService.addUserToSession(userVm.username, sessionService.getSessionId());
-        }
-
-        function printSessionId() {
-            userVm.sessionId = sessionService.getSessionId();
         }
     }
 })();
