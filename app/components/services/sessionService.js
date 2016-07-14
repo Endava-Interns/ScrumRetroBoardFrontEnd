@@ -19,6 +19,7 @@
         this.createSession = createSession;
         this.generateSessionId = generateSessionId;
         this.getSessionId = getSessionId;
+        this.sessionExists = sessionExists;
         this.setSessionId = setSessionId;
 
         function createSession() {
