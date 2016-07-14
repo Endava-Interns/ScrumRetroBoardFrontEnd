@@ -16,7 +16,7 @@
         sessionService
             .sessionExists(userVm.sessionId)
             .then(function(data) {
-                userVm.newSession = data;
+                userVm.newSession = true;
             });
 
         console.log(userVm.newSession);
