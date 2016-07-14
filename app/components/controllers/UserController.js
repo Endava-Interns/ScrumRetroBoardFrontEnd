@@ -18,7 +18,7 @@
                 return result.data;
             });
 
-        console.log(userVm.newSession);
+        console.log(userVm.newSession.value);
 
         //scope method assignments
         userVm.createAndJoinSession = createAndJoinSession;
