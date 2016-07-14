@@ -9,15 +9,11 @@
         var userVm = this;
 
         //scope models
-        userVm.newSession = null;
+        userVm.newSession = false;
         userVm.username = "";
         userVm.sessionId = sessionService.getSessionId();
 
-        sessionService
-            .sessionExists(userVm.sessionId)
-            .then(function(response) {
-                $userVm.newSession = response;
-            });
+        userVm.newSession = sessionService.sessionExists(userVm.sessionId);
 
         console.log(userVm.newSession);
 
