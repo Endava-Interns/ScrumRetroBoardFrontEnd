@@ -3,9 +3,9 @@
 
     angular
         .module('scrum_retroboard')
-        .controller('HomeController', ['$scope', '$location', '$http', 'sessionService', HomeController]);
+        .controller('HomeController', ['$scope', '$state', '$http', 'sessionService', HomeController]);
 
-    function HomeController($scope, $location, $http, sessionService) {
+    function HomeController($scope, $state, $http, sessionService) {
         var homeVm = this;
 
         //scope models
@@ -18,12 +18,12 @@
         //scope method definitions
         function generateSessionId() {
             sessionService.generateSessionId();
-            $location.path('/user');
+            $state.go('user');
         }
 
         function joinSession() {
             sessionService.setSessionId(homeVm.sessionId);
-            $location.path('/user');
+            $state.go('user');
         }
     }
 })();

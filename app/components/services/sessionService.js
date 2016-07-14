@@ -6,6 +6,7 @@
         .service('sessionService', ['$http', sessionService]);
 
     function sessionService($http) {
+        var newSession = false;
         var sessionId = "";
         var sessionApiUrl = 'https://endava-scrum-app-staging.azurewebsites.net/api/Sessions/';
         var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
@@ -54,6 +55,10 @@
                 str += alphabet[randomNum];
             }
             return str;
+        }
+
+        function sessionExists(sessionId) {
+            return $http.get(sessionApiUrl + 'SessionExists/' + sessionId);
         }
 
         function setSessionId(_sessionId) {
