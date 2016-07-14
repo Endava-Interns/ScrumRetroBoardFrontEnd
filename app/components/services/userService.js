@@ -9,6 +9,10 @@
         var userApiUrl = "";
         var username = "";
 
+        this.addUserToSession = addUserToSession;
+        this.setUsername = setUsername;
+        this.getUsername = getUsername;
+
         function addUserToSession(username, sessionId) {
             var user = {
                 session_id: sessionId,
