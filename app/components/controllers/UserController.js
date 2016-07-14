@@ -9,20 +9,22 @@
         var userVm = this;
 
         //scope models
+        userVm.newSession = null;
         userVm.username = "";
         userVm.sessionId = sessionService.getSessionId();
 
-        userVm.newSession = sessionService
-            .sessionExists(userVm.sessionId)
-            .then(function(result) {
-                return result.data;
-            });
+        console.log(userVm.sessionId);
 
-        console.log(userVm.newSession.value);
-
+        sessionService.sessionExists(userVm.sessionId).then(function(response) {
+            userVm.newSession = !response.data;
+            console.log(response.data);
+        });
+        
         //scope method assignments
         userVm.createAndJoinSession = createAndJoinSession;
         userVm.joinExistingSession = joinExistingSession;
+
+        console.log(userVm.sessionId);
 
         //scope method definitions
         function createAndJoinSession() {

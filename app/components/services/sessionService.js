@@ -59,8 +59,11 @@
         }
 
         function sessionExists(sessionId) {
-            return $http
-                    .get(sessionApiUrl + 'SessionExists/' + sessionId);
+            return $http({
+                method: 'GET',
+                url: sessionApiUrl + 'SessionExists/' + sessionId
+            });
+
         }
 
         function setSessionId(_sessionId) {
