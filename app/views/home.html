@@ -1,14 +1,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3 col-sm-4 col-xs-6 col-md-offset-1 col-xs-offset-3 col-sm-offset-0">
-            <button class="btn btn-block btn-primary" ng-click="homeVm.createSession()">CREATE SESSION</button>
+            <button class="btn btn-block btn-primary" ng-click="homeVm.generateSessionId()">CREATE SESSION</button>
             <br class="hidden-md" />
         </div>
         <div class="col-md-7 col-sm-8 col-xs-12 col-sm-offset-0 col-md-offset-0">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Session ID">
+                <input type="text" class="form-control" ng-model="homeVm.sessionId" placeholder="Session ID">
                 <span class="input-group-btn">
-                    <button class="btn btn-success" type="button">JOIN SESSION</button>
+                    <button class="btn btn-success" type="button" ng-click="homeVm.joinSession()">JOIN SESSION</button>
                 </span>
             </div>
         </div>

@@ -8,27 +8,22 @@
     function HomeController($scope, $location, $http, sessionService) {
         var homeVm = this;
 
-        homeVm.createSession = createSession;
+        //scope models
+        homeVm.sessionId = "";
 
-        console.log(sessionService.getSessionId());
+        //scope method assignments
+        homeVm.generateSessionId = generateSessionId;
+        homeVm.joinSession = joinSession;
 
-        function createSession() {
-            sessionService.createSession($http);
-            changeLocation('/user');
+        //scope method definitions
+        function generateSessionId() {
+            sessionService.generateSessionId();
+            $location.path('/user');
         }
 
-        function changeLocation(path) {
-            $location.path(path);
-        }
-
-
-        function generateRandomId() {
-            var str = "";
-            for (var i = 0; i < 10; i++) {
-                var randomNum = Math.floor(Math.random() * alphabet.length);
-                str += alphabet[randomNum];
-            }
-            return str;
+        function joinSession() {
+            sessionService.setSessionId(homeVm.sessionId);
+            $location.path('/user');
         }
     }
 })();
