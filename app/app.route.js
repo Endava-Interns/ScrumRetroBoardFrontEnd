@@ -21,11 +21,14 @@
                 controller: 'UserController',
                 controllerAs: 'userVm'
             })
-            .state('session',{
+            .state('session', {
                 url: '/session/:id',
                 templateUrl: '/views/session.html',
                 controller: 'SessionController',
-                controllerAs: 'sessionVm'
+                controllerAs: 'sessionVm',
+                data: {
+                    css: 'assets/css/session.css'
+                }
             });
 
         $locationProvider.html5Mode(true);
