@@ -1,6 +1,16 @@
 language: node_js
 node_js:
   - '4.4'
+  
+# blocklist
+branches:
+  except:
+    - master
+
+# safelist
+branches:
+  only:
+    - dev
 
 before_script:
   - export DISPLAY=:99.0
