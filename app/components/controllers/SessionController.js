@@ -3,9 +3,9 @@
 
     angular
         .module('scrum_retroboard')
-        .controller('SessionController', ['$scope', '$location', '$http', 'messagesService', 'userService', SessionController]);
+        .controller('SessionController', ['$scope', '$location', '$state', '$http', 'messagesService', 'userService', SessionController]);
 
-    function SessionController($scope, $location, $http, messagesService, userService) {
+    function SessionController($scope, $location, $state, $http, messagesService, userService) {
         var sessionVm = this;
 
         //scope models
@@ -19,10 +19,11 @@
             sessionVm.messageText = "";
         }
 
-        function addMessageToSession(){
-
+        function addMessageToSession(messageCategory){
+            messagesService.addMessageToSession(sessionVm.messageText, messageCategory);
+            clearMessageText();
+            $state.reload();
         }
-
     }
 })();
 

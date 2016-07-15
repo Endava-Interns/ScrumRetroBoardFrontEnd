@@ -9,6 +9,7 @@
         var homeVm = this;
 
         //scope models
+        homeVm.errorMessage = "";
         homeVm.sessionId = "";
 
         //scope method assignments
@@ -22,8 +23,19 @@
         }
 
         function joinSession() {
-            sessionService.setSessionId(homeVm.sessionId);
-            $state.go('user');
+            var sessionExists;
+            sessionService
+                .sessionExists(homeVm.sessionId)
+                .then(function (response) {
+                    sessionExists = response.data;
+                    console.log(response.data);
+                    if (sessionExists) {
+                        sessionService.setSessionId(homeVm.sessionId);
+                        $state.go('user');
+                    } else {
+                        homeVm.errorMessage = "The session does not exist.";
+                    }
+                });
         }
     }
 })();

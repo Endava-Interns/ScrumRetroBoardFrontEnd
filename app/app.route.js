@@ -22,7 +22,7 @@
                 controllerAs: 'userVm'
             })
             .state('session',{
-                url: '/session',
+                url: '/session/:id',
                 templateUrl: '/views/session.html',
                 controller: 'SessionController',
                 controllerAs: 'sessionVm'

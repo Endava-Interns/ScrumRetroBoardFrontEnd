@@ -6,22 +6,27 @@
         .service('messagesService', ['$http', 'userService', messagesService]);
 
     function messagesService($http, userService) {
+        var config = {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        };
         
-        var messagesApiUrl = "";
+        var messagesApiUrl = "https://scrum-retroboard.herokuapp.com/messages/";
         var messageText = "";
         var category = "";
 
         this.addMessageToSession = addMessageToSession;
 
-        function addMessageToSession(username_id, messageText, category){
-            var message = {
-                text: messageText,
-                user_id: username_id,
+        function addMessageToSession(messageText, category){
+            var message = $.param({
+                content: messageText,
+                userId: userService.getUserId(),
                 category: category
-            };
+            });
 
              return $http
-                .post(messagesApiUrl, message)
+                .post(messagesApiUrl + "new", message, config)
                 .success(successCallback)
                 .error(errorCallback);
 
@@ -33,8 +38,5 @@
                 console.log(response.data);
             }
         }
-
-        
-
     }
 })();
