@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
 
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalStart">Add Start Message</button>
+            <button type="button" class="btn btn-primary activate-modal" data-toggle="modal" data-target="#modalStart">Add Start Message</button>
 
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -15,9 +15,9 @@
             </div>
         </div>
 
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalStop">Add Stop Message</button>
+            <button type="button" class="btn btn-primary activate-modal" data-toggle="modal" data-target="#modalStop">Add Stop Message</button>
 
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -29,9 +29,9 @@
             </div>
         </div>
 
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalContinue">Add Continue Message</button>
+            <button type="button" class="btn btn-primary activate-modal" data-toggle="modal" data-target="#modalContinue">Add Continue Message</button>
 
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -47,6 +47,27 @@
 
 
 </div>
+
+
+<div class="container-fluid">
+    
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+            
+            <div class="panel panel-default">
+                  <div class="panel-heading">
+                        <h3 class="panel-title">Active users</h3>
+                  </div>
+                  <div class="panel-body">
+                       
+                  </div>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+
 
 <div class="modal fade" id="modalStart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -64,7 +85,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="sessionVm.addMessageToSession('Start')">Save changes</button>
+                <button type="button" class="btn btn-primary" ng-click="sessionVm.addMessageToSession('Start')" data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>
@@ -86,7 +107,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="sessionVm.addMessageToSession('Stop')">Save changes</button>
+                <button type="button" class="btn btn-primary" ng-click="sessionVm.addMessageToSession('Stop')" data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>
@@ -108,7 +129,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="sessionVm.addMessageToSession('Continue')">Save changes</button>
+                <button type="button" class="btn btn-primary" ng-click="sessionVm.addMessageToSession('Continue')" data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>
