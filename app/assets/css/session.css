@@ -1,3 +1,11 @@
 .activate-modal{
     margin-bottom: 10px;
 }
+
+.msgSelect:hover{
+    cursor: pointer;
+}
+
+.panel-body{
+    word-break:break-all;
+}

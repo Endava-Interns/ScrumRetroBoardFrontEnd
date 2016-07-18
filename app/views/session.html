@@ -11,7 +11,9 @@
                 </div>
                 <div class="panel-body">
                     <ul>
-                        <li ng-repeat="startMessage in sessionVm.startMessages">{{ startMessage.content }}</li>
+                        <li class="msgList" ng-repeat="startMessage in sessionVm.startMessages">
+                            <a class="msgSelect" >{{ startMessage.content }}</a>
+                        </li>
                     </ul>
                 </div>
             </div>
