@@ -8,15 +8,17 @@
     function HomeController($scope, $state, $http, sessionService) {
         var homeVm = this;
 
-        //scope models
+        //<scope-models>
         homeVm.errorMessage = "";
         homeVm.sessionId = "";
+        //</scope-models>
 
-        //scope method assignments
+        //<method-assignments>
         homeVm.generateSessionId = generateSessionId;
         homeVm.joinSession = joinSession;
+        //</method-assignments>
 
-        //scope method definitions
+        //<method-definitions>
         function generateSessionId() {
             sessionService.generateSessionId();
             $state.go('user');
@@ -37,6 +39,7 @@
                     }
                 });
         }
+        //</method-definitions>
     }
 })();
 
