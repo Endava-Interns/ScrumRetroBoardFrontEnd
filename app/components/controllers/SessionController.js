@@ -19,6 +19,9 @@
         //<scope-models>
         sessionVm.messageText = "";
         sessionVm.type = "";
+        sessionVm.startMessages = [];
+        sessionVm.stopMessages = [];
+        sessionVm.continueMessages = [];
         //</scope-models>
 
         //<method-assignments>
@@ -41,6 +44,26 @@
             $state.reload();
         }
         //</method-definitions>
+
+        //<method-calls>
+        messagesService
+            .getMessagesByCategory("Start")
+            .then(function(response) {
+                sessionVm.startMessages = response.data;
+            });
+        
+        messagesService
+            .getMessagesByCategory("Stop")
+            .then(function(response) {
+                sessionVm.stopMessages = response.data;
+            });
+        
+        messagesService
+            .getMessagesByCategory("Continue")
+            .then(function(response) {
+                sessionVm.continueMessages = response.data;
+            });
+        //</method-calls>
     }
 })();
 
