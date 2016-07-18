@@ -25,11 +25,14 @@
         sessionVm.startMessages = [];
         sessionVm.stopMessages = [];
         sessionVm.continueMessages = [];
+        sessionVm.selectedMessage = null;
         //</scope-models>
 
         //<method-assignments>
         sessionVm.clearMessageText = clearMessageText;
         sessionVm.addMessageToSession = addMessageToSession;
+        sessionVm.setSelectedMessage = setSelectedMessage;
+        sessionVm.updateMessage = updateMessage;
         //</method-assignments>
 
         //<method-definitions>
@@ -75,6 +78,14 @@
                     break;
             }
             return found;
+        }
+
+        function setSelectedMessage(message) {
+            sessionVm.selectedMessage = message;
+        }
+
+        function updateMessage(message) {
+            //TODO: Add functionality
         }
 
         function updateData() {

@@ -47,5 +47,9 @@
                 url: messagesApiUrl + "all/" + category
             });
         }
+
+        function updateMessage(message) {
+            //TODO: Add functionality
+        }
     }
 })();
