@@ -24,7 +24,7 @@
                     <h3 class="panel-title">Stop actions</h3>
                 </div>
                 <div class="panel-body">
-
+                    <li ng-repeat="stopMessage in sessionVm.stopMessages">{{ stopMessage.content }}</li>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                     <h3 class="panel-title">Continue actions</h3>
                 </div>
                 <div class="panel-body">
-
+                    <li ng-repeat="continueMessage in sessionVm.continueMessages">{{ continueMessage.content }}</li>
                 </div>
             </div>
         </div>
@@ -55,7 +55,9 @@
                     <h3 class="panel-title">Active users</h3>
                 </div>
                 <div class="panel-body">
-
+                    <ul>
+                        <li ng-repeat="activeUser in sessionVm.activeUsers">{{ activeUser.username }}</li>
+                    </ul>
                 </div>
             </div>
 

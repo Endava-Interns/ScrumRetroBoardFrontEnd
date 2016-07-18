@@ -40,6 +40,7 @@
                 .addUserToSession(userVm.sessionId)
                 .then(function(response) {
                     userService.setUserId(response.data.id);
+                    sessionService.updateSession(true);
                 });
             $state.go('session', { 'id': userVm.sessionId });
         }
