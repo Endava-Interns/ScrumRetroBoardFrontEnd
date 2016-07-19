@@ -124,12 +124,13 @@
                 .then(function (response) {
                     sessionVm.activeUsers = response.data;
                 });
+            userService.confirmAlive();
         }
         //</method-definitions>
 
         //<method-calls>
         updateData();
-        $interval(updateData, 5000);
+        $interval(updateData, 2000);
         //</method-calls>
     }
 })();

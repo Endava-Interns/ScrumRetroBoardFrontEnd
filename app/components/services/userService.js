@@ -22,6 +22,7 @@
         this.getUsername = getUsername;
         this.getUserId = getUserId;
         this.getUsersBySessionId = getUsersBySessionId;
+        this.confirmAlive = confirmAlive;
 
         function addUserToSession(sessionId) {
             var user = $.param({
@@ -80,6 +81,13 @@
             return $http({
                 method: 'GET',
                 url: userApiUrl + "all/" + sessionId
+            });
+        }
+
+        function confirmAlive() {
+            return $http({
+                method: 'GET',
+                url: userApiUrl + 'update/' + userId
             });
         }
     }

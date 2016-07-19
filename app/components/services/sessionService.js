@@ -80,6 +80,13 @@
             return $http
                 .put(sessionApiUrl + sessionId, sessionToUpdate);
         }
+
+        function getNumberOfActiveSessions() {
+            return $http({
+                method: 'GET',
+                url: sessionApiUrl + 
+            })
+        }
     }
 })();
 
