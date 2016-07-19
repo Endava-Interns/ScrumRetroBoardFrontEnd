@@ -21,6 +21,7 @@
         this.getSessionId = getSessionId;
         this.sessionExists = sessionExists;
         this.setSessionId = setSessionId;
+        this.updateSession = updateSession;
 
         function createSession() {
             var session = {
@@ -69,6 +70,15 @@
 
         function setSessionId(_sessionId) {
             sessionId = _sessionId;
+        }
+
+        function updateSession(isChanged) {
+            var sessionToUpdate = {
+                session_id: sessionId,
+                is_changed: isChanged
+            };
+            return $http
+                .put(sessionApiUrl + sessionId, sessionToUpdate);
         }
     }
 })();

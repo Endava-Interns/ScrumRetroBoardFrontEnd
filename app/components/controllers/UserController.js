@@ -8,7 +8,7 @@
     function UserController($scope, $http, $state, sessionService, userService) {
         var userVm = this;
 
-        //scope models
+        //<scope-models>
         userVm.username = "";
         userVm.newSession = null;
         userVm.sessionId = sessionService.getSessionId();
@@ -18,12 +18,14 @@
             .then(function (response) {
                 userVm.newSession = !response.data;
             });
+        //</scope-models>
 
-        //scope method assignments
+        //<method-assignments>
         userVm.createAndJoinSession = createAndJoinSession;
         userVm.joinExistingSession = joinExistingSession;
+        //</method-assignments>
 
-        //scope method definitions
+        //<method-definitions>
         function createAndJoinSession() {
             sessionService
                 .createSession()
@@ -38,9 +40,11 @@
                 .addUserToSession(userVm.sessionId)
                 .then(function(response) {
                     userService.setUserId(response.data.id);
+                    sessionService.updateSession(true);
                 });
             $state.go('session', { 'id': userVm.sessionId });
         }
+        //</method-definitions>
     }
 })();
 

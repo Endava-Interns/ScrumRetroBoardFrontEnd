@@ -21,6 +21,7 @@
         this.setUserId = setUserId;
         this.getUsername = getUsername;
         this.getUserId = getUserId;
+        this.getUsersBySessionId = getUsersBySessionId;
 
         function addUserToSession(sessionId) {
             var user = $.param({
@@ -73,6 +74,13 @@
 
         function getUsername() {
             return username;
+        }
+
+        function getUsersBySessionId(sessionId) {
+            return $http({
+                method: 'GET',
+                url: userApiUrl + "all/" + sessionId
+            });
         }
     }
 })();

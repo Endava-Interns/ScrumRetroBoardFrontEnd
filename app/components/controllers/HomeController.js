@@ -10,13 +10,16 @@
 
         //scope models
         homeVm.showErrorMsg = false;
-        homeVm.sessionId = "";
 
-        //scope method assignments
+        homeVm.sessionId = "";
+        //</scope-models>
+
+        //<method-assignments>
         homeVm.generateSessionId = generateSessionId;
         homeVm.joinSession = joinSession;
+        //</method-assignments>
 
-        //scope method definitions
+        //<method-definitions>
         function generateSessionId() {
             sessionService.generateSessionId();
             $state.go('user');
@@ -37,6 +40,7 @@
                     }
                 });
         }
+        //</method-definitions>
     }
 })();
 
