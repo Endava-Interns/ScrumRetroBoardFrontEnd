@@ -9,7 +9,7 @@
         var homeVm = this;
 
         //scope models
-        homeVm.errorMessage = "";
+        homeVm.showErrorMsg = false;
         homeVm.sessionId = "";
 
         //scope method assignments
@@ -33,7 +33,7 @@
                         sessionService.setSessionId(homeVm.sessionId);
                         $state.go('user');
                     } else {
-                        homeVm.errorMessage = "The session does not exist.";
+                        homeVm.showErrorMsg = true;
                     }
                 });
         }

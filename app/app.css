@@ -6,3 +6,7 @@ body {
 .navbar {
     height: 100px;
 }
+
+.panel_title {
+	margin: 0px;
+}
