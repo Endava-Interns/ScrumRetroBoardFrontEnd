@@ -47,7 +47,7 @@
                     sessionService.updateSession(true);
                 });
             clearMessageText();
-            $state.reload();
+            updateData();
         }
 
         function messageExistsInView(_message) {
@@ -97,6 +97,7 @@
                             sessionVm.startMessages.push(message);
                         }
                     });
+                    console.log(response.data);
                 });
 
             messagesService

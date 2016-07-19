@@ -23,6 +23,7 @@
         this.getUserId = getUserId;
         this.getUsersBySessionId = getUsersBySessionId;
         this.confirmAlive = confirmAlive;
+        this.getNumberOfActiveUsers = getNumberOfActiveUsers;
 
         function addUserToSession(sessionId) {
             var user = $.param({
@@ -88,6 +89,13 @@
             return $http({
                 method: 'GET',
                 url: userApiUrl + 'update/' + userId
+            });
+        }
+
+        function getNumberOfActiveUsers() {
+            return $http({
+                method: 'GET',
+                url: userApiUrl + 'count'
             });
         }
     }

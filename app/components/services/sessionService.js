@@ -18,6 +18,7 @@
 
         this.createSession = createSession;
         this.generateSessionId = generateSessionId;
+        this.getNumberOfActiveSessions = getNumberOfActiveSessions;
         this.getSessionId = getSessionId;
         this.sessionExists = sessionExists;
         this.setSessionId = setSessionId;
@@ -84,8 +85,8 @@
         function getNumberOfActiveSessions() {
             return $http({
                 method: 'GET',
-                url: sessionApiUrl + 
-            })
+                url: sessionApiUrl + 'ActiveSessions'
+            });
         }
     }
 })();
