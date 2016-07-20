@@ -26,7 +26,7 @@
             .getNumberOfActiveUsers()
             .then(function(response) {
                 homeVm.activeUsers = response.data;
-            })
+            });
         //</value-assignments>
 
         //<method-assignments>
