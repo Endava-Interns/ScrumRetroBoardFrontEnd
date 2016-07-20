@@ -154,12 +154,12 @@
             </div>
             <div class="modal-body">
 
-                <textarea name="" id="msgText" class="form-control" rows="3" required="required" ng-model="sessionVm.newMessageContent"></textarea>
+                <textarea ng-disabled="sessionVm.allowMessageEditing()" name="" id="msgText" class="form-control" rows="3" required="required" ng-model="sessionVm.newMessageContent"></textarea>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="sessionVm.updateMessage(sessionVm.selectedMessage)" data-dismiss="modal">Save changes</button>
+                <button type="button" ng-disabled="sessionVm.allowMessageEditing()" class="btn btn-primary" ng-click="sessionVm.updateMessage(sessionVm.selectedMessage)" data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>

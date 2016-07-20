@@ -30,6 +30,7 @@
         //</scope-models>
 
         //<method-assignments>
+        sessionVm.allowMessageEditing = allowMessageEditing;
         sessionVm.clearMessageText = clearMessageText;
         sessionVm.addMessageToSession = addMessageToSession;
         sessionVm.setSelectedMessage = setSelectedMessage;
@@ -37,6 +38,14 @@
         //</method-assignments>
 
         //<method-definitions>
+        function allowMessageEditing() {
+            //TODO: Temporary workaround, find fix for problem (20.07.2016)
+            if (sessionVm.selectedMessage !== null) {
+                return sessionVm.selectedMessage.user.id !== userService.getUserId();
+            }
+            return false;
+        }
+
         function clearMessageText() {
             sessionVm.messageText = "";
         }
@@ -170,5 +179,5 @@
         $interval(updateData, 2000);
         //</method-calls>
     }
-}());
+} ());
 
