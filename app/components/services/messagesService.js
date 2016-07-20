@@ -19,6 +19,7 @@
 
         this.addMessageToSession = addMessageToSession;
         this.getMessagesByCategory = getMessagesByCategory;
+        this.updateMessage = updateMessage;
 
         function addMessageToSession(messageText, category) {
             var message = $.param({
@@ -48,8 +49,24 @@
             });
         }
 
-        function updateMessage(message) {
-            //TODO: Add functionality
+        function updateMessage(_content, messageId) {
+            var message = $.param({
+                content: _content,
+                messageId: messageId
+            });
+
+            return $http
+                .post(messagesApiUrl + "update/", message, config)
+                .success(successCallback)
+                .error(errorCallback);
+
+            function successCallback(response) {
+                return response.data;
+            }
+
+            function errorCallback(response) {
+                console.log(response.data);
+            }
         }
     }
 })();

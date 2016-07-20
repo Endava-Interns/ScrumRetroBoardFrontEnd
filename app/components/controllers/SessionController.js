@@ -26,6 +26,7 @@
         sessionVm.stopMessages = [];
         sessionVm.continueMessages = [];
         sessionVm.selectedMessage = null;
+        sessionVm.newMessageContent = "";
         //</scope-models>
 
         //<method-assignments>
@@ -82,10 +83,20 @@
 
         function setSelectedMessage(message) {
             sessionVm.selectedMessage = message;
+            sessionVm.newMessageContent = message.content;
         }
 
         function updateMessage(message) {
-            //TODO: Add functionality
+            messagesService.updateMessage(sessionVm.newMessageContent, message.id);
+            messagesService
+                .getMessagesByCategory(message.category)
+                .then(function (response) {
+                    response.data.forEach(function (message) {
+                        if (message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
+                            sessionVm.startMessages.push(message);
+                        }
+                    });
+                });
         }
 
         function updateData() {
@@ -97,7 +108,6 @@
                             sessionVm.startMessages.push(message);
                         }
                     });
-                    console.log(response.data);
                 });
 
             messagesService
