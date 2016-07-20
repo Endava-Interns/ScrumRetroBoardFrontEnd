@@ -99,8 +99,10 @@
                                     break;
                                 case "Stop":
                                     sessionVm.stopMessages = [];
+                                    break;
                                 case "Continue":
                                     sessionVm.continueMessages = [];
+                                    break;
                             }
                             response.data.forEach(function (message) {
                                 if (message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
