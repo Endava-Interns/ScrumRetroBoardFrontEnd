@@ -1,14 +1,14 @@
 (function () {
-    'use strict';
+    "use strict";
 
     angular
-        .module('scrum_retroboard')
-        .service('userService', ['$http', 'sessionService', userService]);
+        .module("scrum_retroboard")
+        .service("userService", ["$http", "sessionService", userService]);
 
     function userService($http, sessionService) {
         var config = {
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                "Content-Type": "application/x-www-form-urlencoded"
             }
         };
 
@@ -80,23 +80,23 @@
 
         function getUsersBySessionId(sessionId) {
             return $http({
-                method: 'GET',
+                method: "GET",
                 url: userApiUrl + "all/" + sessionId
             });
         }
 
         function confirmAlive() {
             return $http({
-                method: 'GET',
-                url: userApiUrl + 'update/' + sessionService.getSessionId() + "/" + userId
+                method: "GET",
+                url: userApiUrl + "update/" + sessionService.getSessionId() + "/" + userId
             });
         }
 
         function getNumberOfActiveUsers() {
             return $http({
-                method: 'GET',
-                url: userApiUrl + 'count'
+                method: "GET",
+                url: userApiUrl + "count"
             });
         }
     }
-})();
+}());

@@ -2,13 +2,13 @@
     'use strict';
 
     angular
-        .module('scrum_retroboard')
-        .service('sessionService', ['$http', sessionService]);
+        .module("scrum_retroboard")
+        .service("sessionService", ["$http", sessionService]);
 
     function sessionService($http) {
         var newSession = false;
         var sessionId = "";
-        var sessionApiUrl = 'https://endava-scrum-app-staging.azurewebsites.net/api/Sessions/';
+        var sessionApiUrl = "https://endava-scrum-app-staging.azurewebsites.net/api/Sessions/";
         var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
             'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
@@ -63,8 +63,8 @@
 
         function sessionExists(sessionId) {
             return $http({
-                method: 'GET',
-                url: sessionApiUrl + 'SessionExists/' + sessionId
+                method: "GET",
+                url: sessionApiUrl + "SessionExists/" + sessionId
             });
 
         }
@@ -84,10 +84,10 @@
 
         function getNumberOfActiveSessions() {
             return $http({
-                method: 'GET',
-                url: sessionApiUrl + 'ActiveSessions'
+                method: "GET",
+                url: sessionApiUrl + "ActiveSessions"
             });
         }
     }
-})();
+}());
 

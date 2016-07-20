@@ -1,9 +1,9 @@
 (function () {
-    'use strict';
+    "use strict";
 
     angular
-        .module('scrum_retroboard')
-        .controller('UserController', ['$scope', '$http', '$state', 'sessionService', 'userService', UserController]);
+        .module("scrum_retroboard")
+        .controller("UserController", ["$scope", "$http", "$state", "sessionService", "userService", UserController]);
 
     function UserController($scope, $http, $state, sessionService, userService) {
         var userVm = this;
@@ -43,9 +43,9 @@
                     userService.setUserId(response.data.id);
                     sessionService.updateSession(true);
                 });
-            $state.go('session', { 'id': userVm.sessionId });
+            $state.go("session", { "id": userVm.sessionId });
         }
         //</method-definitions>
     }
-})();
+}());
 

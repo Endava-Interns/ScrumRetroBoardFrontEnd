@@ -1,17 +1,17 @@
 (function () {
-    'use strict';
+    "use strict";
 
     angular
-        .module('scrum_retroboard')
-        .controller('SessionController', [
-            '$scope',
-            '$location',
-            '$state',
-            '$http',
-            '$interval',
-            'messagesService',
-            'userService',
-            'sessionService',
+        .module("scrum_retroboard")
+        .controller("SessionController", [
+            "$scope",
+            "$location",
+            "$state",
+            "$http",
+            "$interval",
+            "messagesService",
+            "userService",
+            "sessionService",
             SessionController
         ]);
 
@@ -168,5 +168,5 @@
         $interval(updateData, 2000);
         //</method-calls>
     }
-})();
+}());
 
