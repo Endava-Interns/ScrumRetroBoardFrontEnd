@@ -43,7 +43,7 @@
             if (sessionVm.selectedMessage !== null) {
                 return sessionVm.selectedMessage.user.id !== userService.getUserId();
             }
-            return false;
+            return true;
         }
 
         function clearMessageText() {
@@ -138,6 +138,7 @@
             messagesService
                 .getMessagesByCategory("Start")
                 .then(function (response) {
+                    sessionVm.startMessages = [];
                     response.data.forEach(function (message) {
                         if (message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
                             sessionVm.startMessages.push(message);
@@ -148,6 +149,7 @@
             messagesService
                 .getMessagesByCategory("Stop")
                 .then(function (response) {
+                    sessionVm.stopMessages = [];
                     response.data.forEach(function (message) {
                         if (message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
                             sessionVm.stopMessages.push(message);
@@ -158,6 +160,7 @@
             messagesService
                 .getMessagesByCategory("Continue")
                 .then(function (response) {
+                    sessionVm.continueMessages = [];
                     response.data.forEach(function (message) {
                         if (message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
                             sessionVm.continueMessages.push(message);
