@@ -88,7 +88,7 @@
         function confirmAlive() {
             return $http({
                 method: 'GET',
-                url: userApiUrl + 'update/' + userId
+                url: userApiUrl + 'update/' + sessionService.getSessionId() + "/" + userId
             });
         }
 

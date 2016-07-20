@@ -87,15 +87,39 @@
         }
 
         function updateMessage(message) {
-            messagesService.updateMessage(sessionVm.newMessageContent, message.id);
             messagesService
-                .getMessagesByCategory(message.category)
-                .then(function (response) {
-                    response.data.forEach(function (message) {
-                        if (message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
-                            sessionVm.startMessages.push(message);
-                        }
-                    });
+                .updateMessage(sessionVm.newMessageContent, message.id)
+                .then(function () {
+                    messagesService
+                        .getMessagesByCategory(message.category)
+                        .then(function (response) {
+                            switch (message.category) {
+                                case "Start":
+                                    sessionVm.startMessages = [];
+                                    break;
+                                case "Stop":
+                                    sessionVm.stopMessages = [];
+                                case "Continue":
+                                    sessionVm.continueMessages = [];
+                            }
+                            response.data.forEach(function (message) {
+                                if (message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
+                                    switch (message.category) {
+                                        case "Start":
+                                            sessionVm.startMessages.push(message);
+                                            break;
+                                        case "Stop":
+                                            sessionVm.stopMessages.push(message);
+                                            break;
+                                        case "Continue":
+                                            sessionVm.continueMessages.push(message);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                            });
+                        });
                 });
         }
 
