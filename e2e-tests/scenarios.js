@@ -43,7 +43,7 @@ describe("Test", function () {
 		var joinButton = element(by.id("joinSession"));
 		joinButton.click();
 		browser.sleep(4000);
-		var user = element(by.id("Simona"));
+		var user = element(by.id("Simona 0"));
 		expect(user.isPresent()).toBe(true);
 	});
 
@@ -68,7 +68,7 @@ describe("Test", function () {
 		var joinButton = element(by.id("joinSession"));
 		joinButton.click();
 		browser.sleep(4000);
-		var user = element(by.id("Anonymous"));
+		var user = element(by.id("Anonymous 0"));
 		expect(user.isPresent()).toBe(true);
 	});
 });
