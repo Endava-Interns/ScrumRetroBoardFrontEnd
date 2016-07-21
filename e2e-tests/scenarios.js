@@ -60,7 +60,7 @@ it('should not join a non-existing session', function(){
 
 	browser.get("http://localhost:8000/");
 	var inputSession = element(by.id('sessionId'));
-	inputSession.sendKeys('testing123');
+	inputSession.sendKeys('simonovaSesija');
 	var joinSessionBtn = element(by.id('enterSession'));
 	joinSessionBtn.click();
 	var warning = element(by.id('warningSession')).isDisplayed();
@@ -73,7 +73,7 @@ it('should add an anonymous user on empty username input', function(){
 
 	browser.get("http://localhost:8000/");
 	var inputSession = element(by.id('sessionId'));
-	inputSession.sendKeys('GjE5PYTLZa');
+	inputSession.sendKeys('testing123');
 	var joinSessionBtn = element(by.id('enterSession'));
 	joinSessionBtn.click();
 	var input = element(by.id('username'));
