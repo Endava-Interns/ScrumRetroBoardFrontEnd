@@ -20,6 +20,7 @@
 
         //<scope-models>
         sessionVm.activeUsers = [];
+        sessionVm.emptyMessage = false;
         sessionVm.messageText = "";
         sessionVm.type = "";
         sessionVm.startMessages = [];
@@ -51,13 +52,18 @@
         }
 
         function addMessageToSession(messageCategory) {
-            messagesService
-                .addMessageToSession(sessionVm.messageText, messageCategory)
-                .then(function (response) {
-                    sessionService.updateSession(true);
-                });
+            if (sessionVm.messageText === "" || sessionVm.messageText === undefined) {
+                sessionVm.emptyMessage = true;
+            } else {
+                messagesService
+                    .addMessageToSession(sessionVm.messageText, messageCategory)
+                    .then(function (response) {
+                        sessionService.updateSession(true);
+                    });
+                updateData();
+                sessionVm.emptyMessage = false;
+            }
             clearMessageText();
-            updateData();
         }
 
         function messageExistsInView(_message) {
@@ -96,42 +102,47 @@
         }
 
         function updateMessage(message) {
-            messagesService
-                .updateMessage(sessionVm.newMessageContent, message.id)
-                .then(function () {
-                    messagesService
-                        .getMessagesByCategory(message.category)
-                        .then(function (response) {
-                            switch (message.category) {
-                                case "Start":
-                                    sessionVm.startMessages = [];
-                                    break;
-                                case "Stop":
-                                    sessionVm.stopMessages = [];
-                                    break;
-                                case "Continue":
-                                    sessionVm.continueMessages = [];
-                                    break;
-                            }
-                            response.data.forEach(function (message) {
-                                if (message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
-                                    switch (message.category) {
-                                        case "Start":
-                                            sessionVm.startMessages.push(message);
-                                            break;
-                                        case "Stop":
-                                            sessionVm.stopMessages.push(message);
-                                            break;
-                                        case "Continue":
-                                            sessionVm.continueMessages.push(message);
-                                            break;
-                                        default:
-                                            break;
-                                    }
+            if (sessionVm.newMessageContent === "" || sessionVm.newMessageContent === undefined) {
+                sessionVm.emptyMessage = true;
+            } else {
+                messagesService
+                    .updateMessage(sessionVm.newMessageContent, message.id)
+                    .then(function () {
+                        messagesService
+                            .getMessagesByCategory(message.category)
+                            .then(function (response) {
+                                switch (message.category) {
+                                    case "Start":
+                                        sessionVm.startMessages = [];
+                                        break;
+                                    case "Stop":
+                                        sessionVm.stopMessages = [];
+                                        break;
+                                    case "Continue":
+                                        sessionVm.continueMessages = [];
+                                        break;
                                 }
+                                response.data.forEach(function (message) {
+                                    if (message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
+                                        switch (message.category) {
+                                            case "Start":
+                                                sessionVm.startMessages.push(message);
+                                                break;
+                                            case "Stop":
+                                                sessionVm.stopMessages.push(message);
+                                                break;
+                                            case "Continue":
+                                                sessionVm.continueMessages.push(message);
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                });
                             });
-                        });
-                });
+                    });
+                sessionVm.emptyMessage = false;
+            }
         }
 
         function updateData() {

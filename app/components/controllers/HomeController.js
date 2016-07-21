@@ -43,11 +43,11 @@
         function joinSession() {
             var sessionExists;
             sessionService
-                .sessionExists(homeVm.sessionId)
+                .sessionExists(homeVm.sessionId.trim())
                 .then(function (response) {
                     sessionExists = response.data;
                     if (sessionExists) {
-                        sessionService.setSessionId(homeVm.sessionId);
+                        sessionService.setSessionId(homeVm.sessionId.trim());
                         $state.go("user");
                     } else {
                         homeVm.showErrorMsg = true;

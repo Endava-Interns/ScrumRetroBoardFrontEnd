@@ -1,8 +1,14 @@
 <!--TODO: Modals should have seperate states-->
 <div class="container-fluid">
+    <div class="row" ng-show="sessionVm.emptyMessage">
+        <div class="col-xs-12">
+            <div id="warningEmptyMessage" class='alert alert-danger' role='alert'><b>Error! </b>You cannot add an empty message!</div>
+        </div>
+    </div>
     <div class="row">
 
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+
 
             <button id="addStart" type="button" class="btn btn-primary activate-modal" data-toggle="modal" data-target="#modalStart">Add Start Message</button>
 
@@ -82,11 +88,10 @@
             <div class="modal-body">
 
                 <textarea name="" id="msgText" class="form-control" rows="3" required="required" ng-model="sessionVm.messageText"></textarea>
-
             </div>
             <div class="modal-footer">
                 <button id="closeStart" type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
-                <button id="saveStart" type="button" class="btn btn-primary" ng-disabled="sessionVm.messageText == ''" ng-click="sessionVm.addMessageToSession('Start')" data-dismiss="modal">Save changes</button>
+                <button id="saveStart" type="button" class="btn btn-primary" ng-click="sessionVm.addMessageToSession('Start')" data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>
@@ -104,11 +109,10 @@
             <div class="modal-body">
 
                 <textarea name="" id="msgText" class="form-control" rows="3" required="required" ng-model="sessionVm.messageText"></textarea>
-
             </div>
             <div class="modal-footer">
                 <button id="closeStop" type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
-                <button id="saveStop" type="button" class="btn btn-primary" ng-disabled="sessionVm.messageText == ''" ng-click="sessionVm.addMessageToSession('Stop')" data-dismiss="modal">Save changes</button>
+                <button id="saveStop" type="button" class="btn btn-primary" ng-click="sessionVm.addMessageToSession('Stop')" data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>
@@ -126,11 +130,10 @@
             <div class="modal-body">
 
                 <textarea name="" id="msgText" class="form-control" rows="3" required="required" ng-model="sessionVm.messageText"></textarea>
-
             </div>
             <div class="modal-footer">
                 <button id="closeContinue" type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
-                <button id="saveContinue" type="button" class="btn btn-primary" ng-disabled="sessionVm.messageText == ''" ng-click="sessionVm.addMessageToSession('Continue')" data-dismiss="modal">Save changes</button>
+                <button id="saveContinue" type="button" class="btn btn-primary" ng-click="sessionVm.addMessageToSession('Continue')" data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>
@@ -147,8 +150,8 @@
             </div>
             <div class="modal-body">
 
-                <textarea id="textModify" ng-readonly="sessionVm.allowMessageEditing()" name="" id="msgText" class="form-control" rows="3" required="required"
-                    ng-model="sessionVm.newMessageContent"></textarea>
+                <textarea id="textModify" ng-readonly="sessionVm.allowMessageEditing()" name="" id="msgText" class="form-control" rows="3"
+                    required="required" ng-model="sessionVm.newMessageContent"></textarea>
 
             </div>
             <div class="modal-footer">
