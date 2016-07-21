@@ -1,10 +1,10 @@
 <!--TODO: Modals should have seperate states-->
-<div class="container">
+<div class="container-fluid">
     <div class="row">
 
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
 
-            <button type="button" class="btn btn-primary activate-modal" data-toggle="modal" data-target="#modalStart">Add Start Message</button>
+            <button id="addStart" type="button" class="btn btn-primary activate-modal" data-toggle="modal" data-target="#modalStart">Add Start Message</button>
 
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -20,8 +20,8 @@
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <button type="button" class="btn btn-primary activate-modal" data-toggle="modal" data-target="#modalStop">Add Stop Message</button>
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <button id="addStop" type="button" class="btn btn-primary activate-modal" data-toggle="modal" data-target="#modalStop">Add Stop Message</button>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Stop actions</h3>
@@ -29,14 +29,14 @@
                 <div class="panel-body">
                     <ul>
                         <li class="msgList" ng-repeat="stopMessage in sessionVm.stopMessages">
-                            <a data-target="#openMessage" data-toggle="modal" ng-click="sessionVm.setSelectedMessage(stopMessage)" class="msgSelect activate-modal" >{{ stopMessage.content + " - (" + stopMessage.user.username + ")" }}</a>
+                            <a data-target="#openMessage" data-toggle="modal" ng-click="sessionVm.setSelectedMessage(stopMessage)" class="msgSelect activate-modal">{{ stopMessage.content + " - (" + stopMessage.user.username + ")" }}</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-            <button type="button" class="btn btn-primary activate-modal" data-toggle="modal" data-target="#modalContinue">Add Continue Message</button>
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+            <button id="addContinue" type="button" class="btn btn-primary activate-modal" data-toggle="modal" data-target="#modalContinue">Add Continue Message</button>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Continue actions</h3>
@@ -50,16 +50,8 @@
                 </div>
             </div>
         </div>
-    </div>
 
-
-</div>
-
-
-<div class="container-fluid">
-
-    <div class="row">
-        <div class="col-xs-12 col-md-2 col-lg-2">
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
 
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -67,22 +59,22 @@
                 </div>
                 <div class="panel-body">
                     <ul>
-                        <li ng-repeat="activeUser in sessionVm.activeUsers">{{ activeUser.username }}</li>
+                        <li class="allUsers" ng-repeat="activeUser in sessionVm.activeUsers">{{ activeUser.username }}</li>
                     </ul>
                 </div>
             </div>
 
         </div>
+
     </div>
 
 </div>
-
 
 <div class="modal fade" id="modalStart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button id="closeXStart" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
                 <h4 class="modal-title" id="myModalLabel">New 'Start' message</h4>
@@ -93,8 +85,9 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-disabled="sessionVm.messageText == ''" ng-click="sessionVm.addMessageToSession('Start')" data-dismiss="modal">Save changes</button>
+                <button id="closeStart" type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
+                <button id="saveStart" type="button" class="btn btn-primary" ng-disabled="sessionVm.messageText == ''" ng-click="sessionVm.addMessageToSession('Start')"
+                    data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>
@@ -104,7 +97,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button id="closeXStop" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
                 <h4 class="modal-title" id="myModalLabel">New 'Stop' message</h4>
@@ -115,8 +108,9 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-disabled="sessionVm.messageText == ''" ng-click="sessionVm.addMessageToSession('Stop')" data-dismiss="modal">Save changes</button>
+                <button id="closeStop" type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
+                <button id="saveStop" type="button" class="btn btn-primary" ng-disabled="sessionVm.messageText == ''" ng-click="sessionVm.addMessageToSession('Stop')"
+                    data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>
@@ -126,7 +120,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button id="closeXContinue" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
                 <h4 class="modal-title" id="myModalLabel">New 'Continue' message</h4>
@@ -137,8 +131,9 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-disabled="sessionVm.messageText == ''" ng-click="sessionVm.addMessageToSession('Continue')" data-dismiss="modal">Save changes</button>
+                <button id="closeContinue" type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
+                <button id="saveContinue" type="button" class="btn btn-primary" ng-disabled="sessionVm.messageText == ''" ng-click="sessionVm.addMessageToSession('Continue')"
+                    data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>
@@ -148,19 +143,21 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button id="closeXModify" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myModalLabel">Modify message</h4>
             </div>
             <div class="modal-body">
 
-                <textarea ng-readonly="sessionVm.allowMessageEditing()" name="" id="msgText" class="form-control" rows="3" required="required" ng-model="sessionVm.newMessageContent"></textarea>
+                <textarea id="textModify" ng-readonly="sessionVm.allowMessageEditing()" name="" id="msgText" class="form-control" rows="3" required="required"
+                    ng-model="sessionVm.newMessageContent"></textarea>
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
-                <button type="button" ng-disabled="sessionVm.allowMessageEditing()" class="btn btn-primary" ng-click="sessionVm.updateMessage(sessionVm.selectedMessage)" data-dismiss="modal">Save changes</button>
+                <button id="closeModify" type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
+                <button id="saveModify" type="button" ng-disabled="sessionVm.allowMessageEditing()" class="btn btn-primary" ng-click="sessionVm.updateMessage(sessionVm.selectedMessage)"
+                    data-dismiss="modal">Save changes</button>
             </div>
         </div>
     </div>

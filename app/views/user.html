@@ -3,9 +3,9 @@
         <div class="col-md-8 col-sm-8 col-xs-12 col-sm-offset-0 col-md-offset-2">
             <form data-toggle="validator" ng-submit="userVm.newSession ? userVm.createAndJoinSession() : userVm.joinExistingSession()">
                 <div class="input-group">
-                    <input type="text" class="form-control" ng-model="userVm.username" placeholder="Display name" required>
+                    <input id="username" type="text" class="form-control" ng-model="userVm.username" placeholder="Display name" required>
                     <span class="input-group-btn">
-                        <button class="btn btn-success" type="button" ng-click="userVm.newSession ? userVm.createAndJoinSession() : userVm.joinExistingSession()">JOIN SESSION</button>
+                        <button id="joinSession" class="btn btn-success" type="button" ng-click="userVm.newSession ? userVm.createAndJoinSession() : userVm.joinExistingSession()">JOIN SESSION</button>
                     </span>
                 </div>
             </form>

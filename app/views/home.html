@@ -1,14 +1,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3 col-sm-4 col-xs-8 col-md-offset-1 col-xs-offset-2 col-sm-offset-0">
-            <button class="btn btn-block btn-primary" ng-click="homeVm.generateSessionId()">CREATE SESSION</button>
+            <button id="createSession" class="btn btn-block btn-primary" ng-click="homeVm.generateSessionId()">CREATE SESSION</button>
             <br class="hidden-md" />
         </div>
         <div class="col-md-7 col-sm-8 col-xs-12 col-sm-offset-0 col-md-offset-0">
             <div class="input-group">
-                <input type="text" class="form-control" ng-model="homeVm.sessionId" placeholder="Session ID">
+                <input id="sessionId" type="text" class="form-control" ng-model="homeVm.sessionId" placeholder="Session ID">
                 <span class="input-group-btn">
-                    <button class="btn btn-success" type="button" ng-click="homeVm.joinSession()">JOIN SESSION</button>
+                    <button id="enterSession" class="btn btn-success" type="button" ng-click="homeVm.joinSession()">JOIN SESSION</button>
                 </span>
             </div>
         </div>
@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-xs-12 col-md-10 col-md-offset-1"> 
             <br />
-            <div class='alert alert-warning' role='alert' ng-show="homeVm.showErrorMsg"><b>Warning</b> The session does not exist!</div>
+            <div id="warningSession" class='alert alert-warning' role='alert' ng-show="homeVm.showErrorMsg"><b>Warning</b> The session does not exist!</div>
         </div>
     </div>
     <div class="row">
@@ -30,8 +30,8 @@
                   </div>
                   <div class="panel-body">
                         <ul type="square">
-                          <li class="label label-primary">ACTIVE SESSIONS: <span data-ng-bind="homeVm.activeSessions"></span></li><br />
-                          <li class="label label-primary">ACTIVE USERS: <span data-ng-bind="homeVm.activeUsers"></span></li>
+                          <li id="activeSessions" class="label label-primary">ACTIVE SESSIONS: <span data-ng-bind="homeVm.activeSessions"></span></li><br />
+                          <li id="activeUsers" class="label label-primary">ACTIVE USERS: <span data-ng-bind="homeVm.activeUsers"></span></li>
                         </ul>
                   </div>
             </div>
