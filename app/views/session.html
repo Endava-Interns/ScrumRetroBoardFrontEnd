@@ -59,7 +59,7 @@
                 </div>
                 <div class="panel-body">
                     <ul>
-                        <li class="allUsers" ng-repeat="activeUser in sessionVm.activeUsers">{{ activeUser.username }}</li>
+                        <li id="{{ activeUser.username }}" class="allUsers" ng-repeat="activeUser in sessionVm.activeUsers">{{ activeUser.username }}</li>
                     </ul>
                 </div>
             </div>
