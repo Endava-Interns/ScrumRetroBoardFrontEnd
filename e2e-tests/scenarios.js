@@ -1,10 +1,14 @@
 describe('Test', function(){
 
+beforeEach(function() {
+	browser.get('/');
+})
 
 it('should open the user page', function(){
 
-	browser.get("http://localhost:8000/");
+	//browser.get("/");
 	browser.sleep(3000);
+
 	browser.waitForAngular();
 	var button = element(by.id('createSession'));
 	button.click();
@@ -16,8 +20,9 @@ it('should open the user page', function(){
 
 it('should create a session and add a user', function(){
 
-	browser.get("http://localhost:8000/");
+	//browser.get("/");
 	browser.sleep(3000);
+	
 	browser.waitForAngular();
 	var button = element(by.id('createSession'));
 	button.click();
@@ -35,8 +40,9 @@ it('should create a session and add a user', function(){
 
 it('should join an existing session', function(){
 
-	browser.get("http://localhost:8000/");
+	//browser.get("/");
 	browser.sleep(3000);
+	
 	browser.waitForAngular();
 	var inputSession = element(by.id('sessionId'));
 	inputSession.sendKeys('testing123');
@@ -56,8 +62,9 @@ it('should join an existing session', function(){
 
 it('should add user to active users', function(){
 
-	browser.get("http://localhost:8000/");
+	//browser.get("/");
 	browser.sleep(3000);
+	
 	browser.waitForAngular();
 	var inputSession = element(by.id('sessionId'));
 	inputSession.sendKeys('testing123');
@@ -78,8 +85,9 @@ it('should add user to active users', function(){
 
 it('should not join a non-existing session', function(){
 
-	browser.get("http://localhost:8000/");
+	//browser.get("http://localhost:8000/");
 	browser.sleep(3000);
+	
 	browser.waitForAngular();
 	var inputSession = element(by.id('sessionId'));
 	inputSession.sendKeys('simonovaSesija');
@@ -95,8 +103,9 @@ it('should not join a non-existing session', function(){
 
 it('should add an anonymous user on empty username input', function(){
 
-	browser.get("http://localhost:8000/");
+	//browser.get("http://localhost:8000/");
 	browser.sleep(3000);
+	
 	browser.waitForAngular();
 	var inputSession = element(by.id('sessionId'));
 	inputSession.sendKeys('testing123');
