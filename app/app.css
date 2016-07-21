@@ -1,0 +1,12 @@
+/* app css stylesheet */
+body {
+    padding-top: 120px;
+}
+
+.navbar {
+    height: 100px;
+}
+
+.panel_title {
+	margin: 0;
+}
