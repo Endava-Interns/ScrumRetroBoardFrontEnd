@@ -35,6 +35,9 @@
         }
 
         function joinExistingSession() {
+            if(userVm.username == "") {
+                userVm.username = "Anonymous";
+            } 
             userService.setUsername(userVm.username);
             userService
                 .addUserToSession(userVm.sessionId)
