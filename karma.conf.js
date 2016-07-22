@@ -15,7 +15,7 @@ module.exports = function (config) {
 
     frameworks: ["jasmine"],
 
-    browsers: ["Chrome"],
+    browsers: ["Chrome", 'Chrome_travis_ci'],
 
     plugins: [
       "karma-chrome-launcher",
@@ -28,16 +28,12 @@ module.exports = function (config) {
       outputFile: "test_out/unit.xml",
       suite: "unit"
     },
-    
+
     customLaunchers: {
       Chrome_travis_ci: {
         base: 'Chrome',
         flags: ['--no-sandbox']
       }
-    }
+    },
   });
-
-  if (process.env.TRAVIS) {
-    configuration.browsers = ['Chrome_travis_ci'];
-  }
 };
