@@ -19,8 +19,4 @@ exports.config = {
     defaultTimeoutInterval: 30000
   }
 
-  if(process.env.TRAVIS) {  
-  'browserName': 'chrome'
-  }
-
 };
