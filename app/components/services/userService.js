@@ -27,7 +27,7 @@
 
         function addUserToSession(sessionId) {
             var user = $.param({
-                username: username,
+                username,
                 id: sessionId
             });
             return $http
@@ -40,7 +40,7 @@
             }
 
             function errorCallback(response) {
-                console.log(response.data);
+                return response.data;
             }
         }
 
@@ -58,7 +58,7 @@
             }
 
             function errorCallback(response) {
-                console.log(response.data);
+                return response.data;
             }
         }
 

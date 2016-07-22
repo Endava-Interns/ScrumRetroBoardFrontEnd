@@ -21,11 +21,11 @@
         this.getMessagesByCategory = getMessagesByCategory;
         this.updateMessage = updateMessage;
 
-        function addMessageToSession(messageText, category) {
+        function addMessageToSession(messageText, _category) {
             var message = $.param({
                 content: messageText,
                 userId: userService.getUserId(),
-                category: category
+                category: _category
             });
 
             return $http
@@ -38,7 +38,7 @@
             }
 
             function errorCallback(response) {
-                console.log(response.data);
+                return response.data;
             }
         }
 
@@ -49,10 +49,10 @@
             });
         }
 
-        function updateMessage(_content, messageId) {
+        function updateMessage(_content, _messageId) {
             var message = $.param({
                 content: _content,
-                messageId: messageId
+                messageId: _messageId
             });
 
             return $http
@@ -65,7 +65,7 @@
             }
 
             function errorCallback(response) {
-                console.log(response.data);
+                return response.data;
             }
         }
     }

@@ -42,7 +42,6 @@
             userService
                 .addUserToSession(userVm.sessionId)
                 .then(function(response) {
-                    console.log(response.data.id);
                     userService.setUserId(response.data.id);
                     sessionService.updateSession(true);
                 });
