@@ -190,7 +190,7 @@
 
         //<method-calls>
         updateData();
-        $interval(updateData, 2000);
+        $interval(updateData, 1000);
         //</method-calls>
     }
 } ());
