@@ -1,5 +1,5 @@
 //jshint strict: false
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
 
     basePath: "./app",
@@ -15,7 +15,7 @@ module.exports = function(config) {
 
     frameworks: ["jasmine"],
 
-    browsers: ["Chrome"],
+    browsers: ["Chrome", 'Chrome_travis_ci'],
 
     plugins: [
       "karma-chrome-launcher",
@@ -27,7 +27,13 @@ module.exports = function(config) {
     junitReporter: {
       outputFile: "test_out/unit.xml",
       suite: "unit"
-    }
+    },
 
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
   });
 };

@@ -123,7 +123,7 @@
                                         break;
                                 }
                                 response.data.forEach(function (message) {
-                                    if (message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
+                                    if (message.user !== null && message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
                                         switch (message.category) {
                                             case "Start":
                                                 sessionVm.startMessages.push(message);
@@ -151,7 +151,7 @@
                 .then(function (response) {
                     sessionVm.startMessages = [];
                     response.data.forEach(function (message) {
-                        if (message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
+                        if (message.user !== null && message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
                             sessionVm.startMessages.push(message);
                         }
                     });
@@ -162,7 +162,7 @@
                 .then(function (response) {
                     sessionVm.stopMessages = [];
                     response.data.forEach(function (message) {
-                        if (message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
+                        if (message.user !== null && message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
                             sessionVm.stopMessages.push(message);
                         }
                     });
@@ -173,7 +173,7 @@
                 .then(function (response) {
                     sessionVm.continueMessages = [];
                     response.data.forEach(function (message) {
-                        if (message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
+                        if (message.user !== null && message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
                             sessionVm.continueMessages.push(message);
                         }
                     });
@@ -190,7 +190,7 @@
 
         //<method-calls>
         updateData();
-        $interval(updateData, 2000);
+        $interval(updateData, 1000);
         //</method-calls>
     }
 } ());
