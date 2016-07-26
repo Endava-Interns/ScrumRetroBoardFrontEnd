@@ -191,52 +191,68 @@
         }
 
         function updateData() {
-            messagesService
-                .getMessagesByCategory("Start")
-                .then(function (response) {
-                    sessionVm.startMessages = [];
-                    response.data.forEach(function (message) {
-                        if (message.user !== null && message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
-                            sessionVm.startMessages.push(message);
-                        }
-                    });
-                });
-
-            messagesService
-                .getMessagesByCategory("Stop")
-                .then(function (response) {
-                    sessionVm.stopMessages = [];
-                    response.data.forEach(function (message) {
-                        if (message.user !== null && message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
-                            sessionVm.stopMessages.push(message);
-                        }
-                    });
-                });
-
-            messagesService
-                .getMessagesByCategory("Continue")
-                .then(function (response) {
-                    sessionVm.continueMessages = [];
-                    response.data.forEach(function (message) {
-                        if (message.user !== null && message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
-                            sessionVm.continueMessages.push(message);
-                        }
-                    });
-                });
-
             userService
                 .getUsersBySessionId(sessionService.getSessionId())
                 .then(function (response) {
                     sessionVm.activeUsers = response.data;
+                    var userExists = false;
+                    console.log(sessionVm.activeUsers.length);
+                    for (var i = 0; i < sessionVm.activeUsers.length && !userExists; ++i) {
+                        if (sessionVm.activeUsers[i].id == userService.getUserId()) {
+                            console.log(sessionVm.activeUsers[i].id + " " + userService.getUserId());
+                            userExists = true;
+                        }
+                    }
+                    console.log(userExists);
+                    if (!userExists) {
+                        $interval.cancel(interval);
+                        alert('Your session has ended.');
+                        leaveSession();
+                    } else {
+                        messagesService
+                            .getMessagesByCategory("Start")
+                            .then(function (response) {
+                                sessionVm.startMessages = [];
+                                response.data.forEach(function (message) {
+                                    if (message.user !== null && message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
+                                        sessionVm.startMessages.push(message);
+                                    }
+                                });
+                            });
+
+                        messagesService
+                            .getMessagesByCategory("Stop")
+                            .then(function (response) {
+                                sessionVm.stopMessages = [];
+                                response.data.forEach(function (message) {
+                                    if (message.user !== null && message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
+                                        sessionVm.stopMessages.push(message);
+                                    }
+                                });
+                            });
+
+                        messagesService
+                            .getMessagesByCategory("Continue")
+                            .then(function (response) {
+                                sessionVm.continueMessages = [];
+                                response.data.forEach(function (message) {
+                                    if (message.user !== null && message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
+                                        sessionVm.continueMessages.push(message);
+                                    }
+                                });
+                            });
+                    }
                 });
             userService.confirmAlive();
         }
         //</method-definitions>
 
         //<method-calls>
-        updateData();
-        var interval = $interval(updateData, 1000);
-        $scope.$on('$destroy', function() {
+        setTimeout(updateData, 5000);
+        var interval = $interval(function () {
+            updateData();
+        }, 1000);
+        $scope.$on('$destroy', function () {
             $interval.cancel(interval);
         });
         //</method-calls>
