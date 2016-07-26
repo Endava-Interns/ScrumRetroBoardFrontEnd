@@ -58,7 +58,8 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-
+            <button id="leaveSession" type="button" class="btn btn-danger pull-left" ng-click="sessionVm.leaveSession()"
+                data-dismiss="modal">Leave session</button>
             <div id="users" class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Active users</h3>
@@ -155,9 +156,12 @@
 
             </div>
             <div class="modal-footer">
+                <button id="deleteModify" type="button" class="btn btn-danger pull-left" ng-disabled="sessionVm.allowMessageEditing()" ng-click="sessionVm.deleteMessage(sessionVm.selectedMessage)"
+                    data-dismiss="modal">Delete</button>
                 <button id="closeModify" type="button" class="btn btn-secondary" ng-click="sessionVm.clearMessageText()" data-dismiss="modal">Close</button>
                 <button id="saveModify" type="button" ng-disabled="sessionVm.allowMessageEditing()" class="btn btn-primary" ng-click="sessionVm.updateMessage(sessionVm.selectedMessage)"
                     data-dismiss="modal">Save changes</button>
+
             </div>
         </div>
     </div>

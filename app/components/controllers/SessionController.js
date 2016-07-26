@@ -34,8 +34,10 @@
         sessionVm.allowMessageEditing = allowMessageEditing;
         sessionVm.clearMessageText = clearMessageText;
         sessionVm.addMessageToSession = addMessageToSession;
+        sessionVm.leaveSession = leaveSession;
         sessionVm.setSelectedMessage = setSelectedMessage;
         sessionVm.updateMessage = updateMessage;
+        sessionVm.deleteMessage = deleteMessage;
         //</method-assignments>
 
         //<method-definitions>
@@ -64,6 +66,10 @@
                 sessionVm.emptyMessage = false;
             }
             clearMessageText();
+        }
+
+        function leaveSession() {
+            $state.go('home');
         }
 
         function messageExistsInView(_message) {
@@ -145,6 +151,45 @@
             }
         }
 
+        function deleteMessage(message) {
+            messagesService
+                .deleteMessage(message.id)
+                .then(function () {
+                    messagesService
+                        .getMessagesByCategory(message.category)
+                        .then(function (response) {
+                            switch (message.category) {
+                                case "Start":
+                                    sessionVm.startMessages = [];
+                                    break;
+                                case "Stop":
+                                    sessionVm.stopMessages = [];
+                                    break;
+                                case "Continue":
+                                    sessionVm.continueMessages = [];
+                                    break;
+                            }
+                            response.data.forEach(function (message) {
+                                if (message.user !== null && message.user.session.sessionID === sessionService.getSessionId() && !messageExistsInView(message)) {
+                                    switch (message.category) {
+                                        case "Start":
+                                            sessionVm.startMessages.push(message);
+                                            break;
+                                        case "Stop":
+                                            sessionVm.stopMessages.push(message);
+                                            break;
+                                        case "Continue":
+                                            sessionVm.continueMessages.push(message);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                            });
+                        });
+                });
+        }
+
         function updateData() {
             messagesService
                 .getMessagesByCategory("Start")
@@ -190,7 +235,10 @@
 
         //<method-calls>
         updateData();
-        $interval(updateData, 1000);
+        var interval = $interval(updateData, 1000);
+        $scope.$on('$destroy', function() {
+            $interval.cancel(interval);
+        });
         //</method-calls>
     }
 } ());

@@ -20,6 +20,7 @@
         this.addMessageToSession = addMessageToSession;
         this.getMessagesByCategory = getMessagesByCategory;
         this.updateMessage = updateMessage;
+        this.deleteMessage = deleteMessage;
 
         function addMessageToSession(messageText, _category) {
             var message = $.param({
@@ -40,6 +41,26 @@
             function errorCallback(response) {
                 return response.data;
             }
+        }
+
+        function deleteMessage(id) {
+            var params = $.param({
+                id
+            });
+
+            return $http
+                .post(messagesApiUrl + "delete", params, config)
+                .success(successCallback)
+                .error(errorCallback);
+
+            function successCallback(response) {
+                return response.data;
+            }
+
+            function errorCallback(response) {
+                return response.data;
+            }
+
         }
 
         function getMessagesByCategory(category) {
@@ -69,4 +90,4 @@
             }
         }
     }
-}());
+} ());
